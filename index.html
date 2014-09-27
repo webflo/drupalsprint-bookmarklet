@@ -5,7 +5,15 @@
 </head>
 <body>
 
-<p><em>You did it!</em>&nbsp; You can run your bookmarklet by clicking: <a class="bookmarklet" href="javascript:(function()%7Bvar%20tags%20%3D%20jQuery('%23edit-taxonomy-vocabulary-9-und').val()%3Btags%20%3D%20jQuery.map(tags.split('%2C%20')%2C%20jQuery.trim)%3Bif%20(jQuery.inArray('Amsterdram2014'%2C%20tags)%20%3D%3D%3D%20-1)%20%7BjQuery('%23edit-taxonomy-vocabulary-9-und').val(jQuery('%23edit-taxonomy-vocabulary-9-und').val()%20%2B%20'%2C%20Amsterdram2014')%3B%7D%7D)()">this link</a><br><br>and here is the code:</p>
+<p>Add this link to your toolbar: <a class="bookmarklet" href="javascript:(function()%7Bvar%20tags%20%3D%20jQuery('%23edit-taxonomy-vocabulary-9-und').val()%3Btags%20%3D%20jQuery.map(tags.split('%2C%20')%2C%20jQuery.trim)%3Bif%20(jQuery.inArray('Amsterdram2014'%2C%20tags)%20%3D%3D%3D%20-1)%20%7BjQuery('%23edit-taxonomy-vocabulary-9-und').val(jQuery('%23edit-taxonomy-vocabulary-9-und').val()%20%2B%20'%2C%20Amsterdram2014')%3B%7D%7D)()">Tag issue!</a></p>
+
+<pre>
+  var tags = jQuery('#edit-taxonomy-vocabulary-9-und').val();
+  tags = jQuery.map(tags.split(', '), jQuery.trim);
+  if (jQuery.inArray('Amsterdram2014', tags) === -1) {
+    jQuery('#edit-taxonomy-vocabulary-9-und').val(jQuery('#edit-taxonomy-vocabulary-9-und').val() + ', Amsterdram2014');
+  }
+</pre>
 
 </body>
 </html>
