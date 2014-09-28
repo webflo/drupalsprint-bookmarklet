@@ -5,13 +5,19 @@
 </head>
 <body>
 
-<p>Add this link to your toolbar: <a class="bookmarklet" href="javascript:(function()%7Bvar%20tags%20%3D%20jQuery('%23edit-taxonomy-vocabulary-9-und').val()%3Btags%20%3D%20jQuery.map(tags.split('%2C%20')%2C%20jQuery.trim)%3Bif%20(jQuery.inArray('Amsterdam'%2C%20tags)%20%3D%3D%3D%20-1)%20%7BjQuery('%23edit-taxonomy-vocabulary-9-und').val(jQuery('%23edit-taxonomy-vocabulary-9-und').val()%20%2B%20'%2C%20Amsterdam2014')%3B%7D%7D)()">Tag issue!</a></p>
+<p>Add this link to your toolbar: <a class="bookmarklet" href="javascript:(function()%7Bvar%20tags%20%3D%20jQuery('%23edit-taxonomy-vocabulary-9-und').val()%3Bvar%20add_comma%20%3D%20tags.length%20%3E%200%3Bconsole.log(add_comma)%3Btags%20%3D%20jQuery.map(tags.split('%2C%20')%2C%20jQuery.trim)%3Bif%20(jQuery.inArray('Amsterdam2014'%2C%20tags)%20%3D%3D%3D%20-1)%20%7Bif%20(add_comma)%20%7BjQuery('%23edit-taxonomy-vocabulary-9-und').val(jQuery('%23edit-taxonomy-vocabulary-9-und').val()%20%2B%20'%2C%20Amsterdam2014')%3B%7D%20else%20%7BjQuery('%23edit-taxonomy-vocabulary-9-und').val(%20'Amsterdam2014')%3B%7D%7D%7D)()">Tag issue!</a></p>
 
 <pre>
   var tags = jQuery('#edit-taxonomy-vocabulary-9-und').val();
+  var add_comma = tags.length > 0;
+console.log(add_comma);
   tags = jQuery.map(tags.split(', '), jQuery.trim);
   if (jQuery.inArray('Amsterdam2014', tags) === -1) {
-    jQuery('#edit-taxonomy-vocabulary-9-und').val(jQuery('#edit-taxonomy-vocabulary-9-und').val() + ', Amsterdam2014');
+    if (add_comma) {
+       jQuery('#edit-taxonomy-vocabulary-9-und').val(jQuery('#edit-taxonomy-vocabulary-9-und').val() + ', Amsterdam2014');
+    } else {
+       jQuery('#edit-taxonomy-vocabulary-9-und').val( 'Amsterdam2014');
+    }
   }
 </pre>
 
